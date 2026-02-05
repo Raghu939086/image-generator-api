@@ -1,5 +1,6 @@
 import { VertexAI } from "@google-cloud/vertexai";
-
+import { initGoogleAuth } from "../config/googleAuth";
+initGoogleAuth()
 console.log("PROJECT:", process.env.GOOGLE_PROJECT_ID);
 console.log("LOCATION:", process.env.GOOGLE_LOCATION);
 const vertexAI = new VertexAI({
