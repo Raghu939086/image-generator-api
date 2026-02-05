@@ -1,8 +1,6 @@
-// 🚨 STEP 1: Initialize auth FIRST (no Vertex import yet)
+// 🚨 STEP 1: Initialize auth FIRST 
 import { initGoogleAuth } from "../config/googleAuth.js";
-
-console.log("🔐 Initializing Google Auth...");
-await initGoogleAuth();   // 👈 MUST finish before VertexAI loads
+initGoogleAuth();   
 console.log("✅ Google Auth initialized");
 
 // 🚨 STEP 2: Now import VertexAI
