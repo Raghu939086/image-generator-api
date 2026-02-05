@@ -12,7 +12,7 @@ console.log(
   "GOOGLE_APPLICATION_CREDENTIALS:",
   process.env.GOOGLE_APPLICATION_CREDENTIALS
 );
-console.log("hello",GOOGLE_SERVICE_ACCOUNT_JSON)
+console.log("hello",process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
 
 // 🚀 Create Vertex AI client
 const vertexAI = new VertexAI({
