@@ -1,25 +1,23 @@
-import fs from "fs";
-import path from "path";
+import { writeFileSync } from "fs";
 
 export function initGoogleAuth() {
   if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    // Already set (local dev)
+    console.log("✅ Google credentials already set");
     return;
   }
 
-  const base64 = process.env.GOOGLE_SERVICE_ACCOUNT_BASE64;
-
-  if (!base64) {
-    throw new Error("GOOGLE_SERVICE_ACCOUNT_BASE64 is missing");
+  if (!process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+    throw new Error("❌ GOOGLE_SERVICE_ACCOUNT_JSON missing");
   }
 
-  const json = Buffer.from(base64, "base64").toString("utf8");
+  const credsPath = "/tmp/gcp-key.json";
 
-  const credPath = path.join("/tmp", "service-account.json");
+  writeFileSync(
+    credsPath,
+    process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+  );
 
-  fs.writeFileSync(credPath, json);
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = credsPath;
 
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = credPath;
-
-  console.log("✅ Google credentials written to:", credPath);
+  console.log("✅ Google Auth initialized at", credsPath);
 }
