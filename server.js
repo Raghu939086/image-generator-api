@@ -6,9 +6,6 @@ import connectDB from "./src/config/db.js";
 import generateRoutes from "./src/routes/generate.routes.js";
 
 dotenv.config();
-
-process.env.GOOGLE_APPLICATION_CREDENTIALS =
-  "C:/Users/Raghu/Desktop/imageGenerater/ai_image_generatot-api/service-account.json";
 const app = express();
 connectDB();
 
