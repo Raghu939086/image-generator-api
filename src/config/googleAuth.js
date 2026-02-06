@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 
 export function initGoogleAuth() {
   if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    console.log("✅ Google credentials already set");
+    
     return;
   }
 
@@ -19,5 +19,5 @@ export function initGoogleAuth() {
 
   process.env.GOOGLE_APPLICATION_CREDENTIALS = credsPath;
 
-  console.log("✅ Google Auth initialized at", credsPath);
+  
 }
